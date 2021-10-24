@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
+const Bar = styled.div`
+  background: #202225;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 120px;
+  width: 130px;
   border: 2px solid #36393f;
   border-radius: 10px;
   padding: 2px 10px 10px 10px;
@@ -52,16 +59,12 @@ const SettingsBar = ({
   colorTwo,
   next,
   prev,
+  theme,
+  nextTheme,
+  prevTheme,
 }) => {
   return (
-    <div
-      style={{
-        background: "#202225",
-        height: "25vh",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <Bar>
       <Container>
         <Section>Team One</Section>
         <Title>Players</Title>
@@ -111,7 +114,17 @@ const SettingsBar = ({
           </Button>
         </Commands>
       </Container>
-    </div>
+
+      <Container>
+        <Section>Settings</Section>
+        <Title>Color</Title>
+        <Commands>
+          <Button onClick={prevTheme()}>{"<"}</Button>
+          <Data>{theme}</Data>
+          <Button onClick={nextTheme()}>{">"}</Button>
+        </Commands>
+      </Container>
+    </Bar>
   );
 };
 

@@ -1,32 +1,85 @@
 import Draggable from "react-draggable";
-import styled from "styled-components";
+import {
+  Base,
+  LeftAttack,
+  LeftGoal,
+  MiddleCircle,
+  AdjustCenter,
+  MiddleLine,
+  RightAttack,
+  RightGoal,
+  Square,
+  StyledPlayer,
+  LeftLine,
+  RightLine,
+  LeftDefense,
+  AdjustLeft,
+  LeftCircle,
+  RightDefense,
+  RightCircle,
+  AdjustRight,
+  LeftArea,
+  RightArea,
+} from "../styles/FieldStyles";
 
-const StyledPlayer = styled.div`
-  border: 2px solid #fff;
-  color: #fff;
-  background: ${({ color }) => (color ? color : "#000")};
-  height: 50px;
-  width: 50px;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: grab;
-  position: absolute;
-`;
+const Field = ({ teams, colorOne, colorTwo, theme }) => {
+  const returnLines = () => {
+    if (theme.name === "Basketball") {
+      return (
+        <Square>
+          <AdjustLeft>
+            <LeftDefense />
+            <LeftLine />
+            <LeftCircle />
+          </AdjustLeft>
+          <AdjustCenter>
+            <MiddleLine />
+            <MiddleCircle />
+          </AdjustCenter>
+          <AdjustRight>
+            <RightDefense />
+            <RightLine />
+            <RightCircle />
+          </AdjustRight>
+        </Square>
+      );
+    } else if (theme.name === "Volleyball") {
+      return (
+        <Square>
+          <LeftAttack />
+          <AdjustCenter>
+            <MiddleLine />
+          </AdjustCenter>
+          <RightAttack />
+        </Square>
+      );
+    } else if (theme.name === "Futsal") {
+      return (
+        <Square>
+          <LeftArea />
+          <AdjustCenter>
+            <MiddleLine />
+            <MiddleCircle />
+          </AdjustCenter>
+          <RightArea />
+        </Square>
+      );
+    } else {
+      return (
+        <Square>
+          <LeftGoal />
+          <AdjustCenter>
+            <MiddleLine />
+            <MiddleCircle />
+          </AdjustCenter>
+          <RightGoal />
+        </Square>
+      );
+    }
+  };
 
-const Field = ({ teams, colorOne, colorTwo }) => {
   return (
-    <div
-      id="field"
-      name="field"
-      style={{
-        background: "#63ca00",
-        height: "75vh",
-        width: "100vw",
-        overflow: "hidden",
-      }}
-    >
+    <Base id="field" name="field" back={theme.hex}>
       {teams.one &&
         teams.one.map((p, index) => (
           <Draggable bounds="body" id={index} key={"t1" + index}>
@@ -40,7 +93,8 @@ const Field = ({ teams, colorOne, colorTwo }) => {
             <StyledPlayer color={colorTwo}>{index + 1}</StyledPlayer>
           </Draggable>
         ))}
-    </div>
+      {returnLines()}
+    </Base>
   );
 };
 

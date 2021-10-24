@@ -11,13 +11,33 @@ const colors = [
   { name: "Pink", hex: "#c940be" },
 ];
 
+const themes = [
+  { name: "Soccer", hex: "#91ce56" },
+  { name: "Futsal", hex: "#0099cc" },
+  { name: "Volleyball", hex: "#e68064" },
+  { name: "Basketball", hex: "#ca4c08" },
+];
+
 function App() {
+  const [theme, setTheme] = useState(0);
   const [teams, setTeams] = useState({
     one: ["", "", ""],
     colorOne: 0,
     two: [],
     colorTwo: 1,
   });
+
+  const nextTheme = () => {
+    if (theme < themes.length - 1) {
+      setTheme(theme + 1);
+    }
+  };
+
+  const prevTheme = () => {
+    if (theme > 0) {
+      setTheme(theme - 1);
+    }
+  };
 
   const nextColor = (e) => {
     let state = e.target.name;
@@ -56,6 +76,7 @@ function App() {
         teams={teams}
         colorOne={colors[teams.colorOne].hex}
         colorTwo={colors[teams.colorTwo].hex}
+        theme={themes[theme]}
       />
       <SettingsBar
         teams={teams}
@@ -65,6 +86,9 @@ function App() {
         colorTwo={colors[teams.colorTwo].name}
         next={() => nextColor}
         prev={() => prevColor}
+        theme={themes[theme].name}
+        nextTheme={() => nextTheme}
+        prevTheme={() => prevTheme}
       />
     </>
   );
