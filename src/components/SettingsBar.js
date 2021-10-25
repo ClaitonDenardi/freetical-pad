@@ -4,6 +4,7 @@ const Bar = styled.div`
   background: #202225;
   height: 25vh;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -116,12 +117,25 @@ const SettingsBar = ({
       </Container>
 
       <Container>
-        <Section>Settings</Section>
-        <Title>Color</Title>
+        <Section>More</Section>
+        <Title>Theme</Title>
         <Commands>
           <Button onClick={prevTheme()}>{"<"}</Button>
           <Data>{theme}</Data>
           <Button onClick={nextTheme()}>{">"}</Button>
+        </Commands>
+        <Title>Source code</Title>
+        <Commands>
+          <Button
+            onClick={() =>
+              window.open(
+                "https://github.com/ClaitonDenardi/react-tatical-pad",
+                "_blank"
+              )
+            }
+          >
+            {">"}
+          </Button>
         </Commands>
       </Container>
     </Bar>

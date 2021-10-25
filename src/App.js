@@ -62,11 +62,12 @@ function App() {
     }
   };
 
-  const removePlayer = () => {
-    let aux = teams.one;
+  const removePlayer = (e) => {
+    let team = e.target.name;
+    let aux = teams[team];
     if (aux.length > 0) {
       aux.pop();
-      setTeams({ ...teams, one: aux });
+      setTeams({ ...teams, [team]: aux });
     }
   };
 
