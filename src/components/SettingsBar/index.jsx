@@ -1,57 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const Bar = styled.div`
-  background: #202225;
-  height: 25vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 130px;
-  border: 2px solid #36393f;
-  border-radius: 10px;
-  padding: 2px 10px 10px 10px;
-  border-radius: 10px;
-`;
-
-const Commands = styled.div`
-  display: flex;
-`;
-
-const Section = styled.span`
-  color: #cec5c5;
-  font-weight: bold;
-`;
-
-const Title = styled.span`
-  color: #fff;
-  margin-top 3px;
-`;
-
-const Data = styled.span`
-  color: #fff;
-  margin: 4px 8px;
-`;
-
-const Button = styled.button`
-  color: #3ba55d;
-  background: #36393f;
-  border: none;
-  border-radius: 100%;
-  width: 30px;
-  height: 30px;
-
-  :hover {
-    border-radius: 20%;
-  }
-`;
+import { Bar, Button, Commands, Container, Data, Section, Title } from "./styles";
 
 const SettingsBar = ({
   teams,

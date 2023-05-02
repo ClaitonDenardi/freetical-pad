@@ -21,7 +21,7 @@ import {
   AdjustRight,
   LeftArea,
   RightArea,
-} from "../styles/FieldStyles";
+} from "./styles";
 
 const Field = ({ teams, colorOne, colorTwo, theme }) => {
   const returnLines = () => {
