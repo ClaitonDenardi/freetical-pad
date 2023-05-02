@@ -1,3 +1,4 @@
+import React from "react";
 import Field from "./components/Field";
 import SettingsBar from "./components/SettingsBar";
 import useSettings from "./hooks/useSettings";
